@@ -43,5 +43,9 @@ mean((train_data$yhat - train_data$SalePrice)^2)
 #make predictions on test_data
 test_data$SalePrice <- predict(prune.tree.model, newdata = test_data)
 
+#Features to print in submission file
+submission_columns <- c('Id', 'SalePrice')
+submission_data <- test_data[submission_columns]
+write.csv(submission_data, file = "output/PrunedTreeModel.csv", row.names = FALSE)
 
 
